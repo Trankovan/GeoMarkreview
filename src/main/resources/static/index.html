@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Drawing Tool</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.5.0/ol.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-container">
+    <div id="map"></div>
+
+    <div id="features-panel">
+        <h3>Список Объектов</h3>
+        <div id="features-list"></div>
+    </div>
+
+    <div id="toolbar">
+        <div class="tool-section">
+            <label for="draw-type">Объект:</label>
+            <select id="draw-type" class="control-input">
+                <option value="Point">Marker</option>
+                <option value="LineString">Line</option>
+                <option value="Polygon">Polygon</option>
+            </select>
+        </div>
+
+        <div class="tool-section">
+            <label>Цвет:</label>
+            <div id="color-palette" class="color-palette">
+                <span class="color-option selected" style="background-color: #e2081a;" data-color="#e2081a"></span>
+                <span class="color-option" style="background-color: #0000ff;" data-color="#0000ff"></span>
+                <span class="color-option" style="background-color: #008000;" data-color="#008000"></span>
+                <span class="color-option" style="background-color: #ffa500;" data-color="#ffa500"></span>
+                <span class="color-option" style="background-color: #800080;" data-color="#800080"></span>
+                <span class="color-option" style="background-color: #000000;" data-color="#000000"></span>
+            </div>
+        </div>
+
+        <div class="tool-section button-group">
+            <button id="draw-btn" class="control-btn">Start Drawing</button>
+            <button id="modify-btn" class="control-btn">Modify</button>
+            <button id="delete-btn" class="control-btn">Delete</button>
+            <button id="save-btn" class="control-btn primary">Save</button>
+            <button id="load-btn" class="control-btn">Load</button>
+        </div>
+
+        <div class="tool-section" id="feature-info">
+            Объект не выбран
+        </div>
+    </div>
+</div>
+
+<div id="popup-container" class="popup">
+    <h3>Характеристики Объекта</h3>
+    <div class="form-group">
+        <label for="feature-name">Name:</label>
+        <input type="text" id="feature-name" class="control-input">
+    </div>
+    <div class="form-group">
+        <label>Color:</label>
+        <div id="popup-color-palette" class="color-palette">
+            <span class="color-option" style="background-color: #e2081a;" data-color="#e2081a"></span>
+            <span class="color-option" style="background-color: #0000ff;" data-color="#0000ff"></span>
+            <span class="color-option" style="background-color: #008000;" data-color="#008000"></span>
+            <span class="color-option" style="background-color: #ffa500;" data-color="#ffa500"></span>
+            <span class="color-option" style="background-color: #800080;" data-color="#800080"></span>
+            <span class="color-option" style="background-color: #000000;" data-color="#000000"></span>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="save-feature" class="control-btn primary">Save</button>
+        <button id="cancel-feature" class="control-btn">Cancel</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/ol@v10.5.0/dist/ol.js"></script>
+<script src="map.js"></script>
+
+</body>
+</html>

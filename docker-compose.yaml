@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "0.0.0.0:8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/geoDB
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=p48e56SD!@Qq
+    depends_on:
+      - db
+    networks:
+      - geomark-network
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=geoDB
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=p48e56SD!@Qq
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - "0.0.0.0:5433:5432"
+    networks:
+      - geomark-network
+
+volumes:
+  postgres_data:
+
+networks:
+  geomark-network:
+    driver: bridge
